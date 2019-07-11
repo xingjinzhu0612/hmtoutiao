@@ -37,7 +37,7 @@ export default {
     return {
       // 表单对象
       loginForm: {
-        mobile: '13911111111',
+        mobile: '18701233290',
         code: '246810'
       },
       // 表单的校验规则
@@ -69,7 +69,7 @@ export default {
               this.$router.push('/')
             })
             .catch(() => {
-              this.$message.error('用户名或密码错误')
+              this.$message.error('用户名或验证码错误')
             })
         }
       })
