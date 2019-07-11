@@ -25,12 +25,12 @@
 
 <script>
 export default {
-    data(){
-        return{
-            checked:true
-        }
+  data () {
+    return {
+      checked: true
     }
-};
+  }
+}
 </script>
 
 <style scoped lang='less' >
@@ -57,6 +57,6 @@ export default {
 }
 
 .el-checkbox {
-  margin-right: 10px;  
+  margin-right: 10px;
 }
 </style>
