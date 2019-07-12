@@ -62,10 +62,13 @@ export default {
         if (valid) {
           // 校验成功，进行登录
           this.axios
-            .post('http://ttapi.research.itcast.cn/mp/v1_0/authorizations', this.loginForm)
+            .post('authorizations', this.loginForm)
             .then((res) => {
               console.log(res)
-              const data = res.data
+              // const data = res.data
+              // 保存登录状态
+              // 保存登录后返回的用户信息，包含token
+              window.sessionStorage.setItem('hmtoutiao', JSON.stringify(res.data.data))
               this.$router.push('/')
             })
             .catch(() => {
