@@ -43,12 +43,18 @@
 
       </el-form>
     </el-card>
-    <el-card></el-card>
+    <!-- 结果容器 -->
+    <el-card>
+
+
+    </el-card>
   </div>
 </template>
 
 <script>
+import MyTest from '@/components/my-test.vue'
 export default {
+  components: { MyTest },
   data () {
     return {
       // 提交给后台的筛选数据，传参
