@@ -2,10 +2,8 @@
   <div class="artisle-container">
     <el-card>
       <div slot="header">
-        <el-breadcrumb separator-class="el-icon-arrow-right">
-          <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-          <el-breadcrumb-item>内容管理</el-breadcrumb-item>
-        </el-breadcrumb>
+          <my-bread>内容管理</my-bread>
+
       </div>
 
       <el-form :model="reqParams" size="small" label-width="80px">
@@ -46,15 +44,14 @@
     <!-- 结果容器 -->
     <el-card>
 
-
     </el-card>
   </div>
 </template>
 
 <script>
-import MyTest from '@/components/my-test.vue'
+import MyBread from '@/components/my-bread.vue'
 export default {
-  components: { MyTest },
+  components: { MyBread },
   data () {
     return {
       // 提交给后台的筛选数据，传参
