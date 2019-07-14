@@ -51,13 +51,13 @@
         <span class="txt">江苏传智播客科技有限公司</span>
         <el-dropdown style="float:right">
           <span class="el-dropdown-link">
-            <img src="../../assets/images/avatar.jpg" alt />
-            <b>黑马小哥</b>
+            <img :src="avatar" alt />
+            <b>{{name}}</b>
             <i class="el-icon-arrow-down el-icon--right"></i>
           </span>
           <el-dropdown-menu slot="dropdown">
-            <el-dropdown-item icon="el-icon-setting">个人设置</el-dropdown-item>
-            <el-dropdown-item icon="el-icon-unlock">退出登录</el-dropdown-item>
+            <el-dropdown-item icon="el-icon-setting" @click.native="setting">个人设置</el-dropdown-item>
+            <el-dropdown-item icon="el-icon-unlock" @click.native="logout">退出登录</el-dropdown-item>
           </el-dropdown-menu>
         </el-dropdown>
       </el-header>
@@ -72,12 +72,28 @@
 export default {
   data () {
     return {
-      collapse: false
+      collapse: false,
+      name: '',
+      avatar: ''
+
     }
+  },
+  created () {
+    const user = JSON.parse(window.sessionStorage.getItem('hmtoutiao'))
+    this.name = user.name
+    this.avatar = user.photo
   },
   methods: {
     toggleMenu () {
       this.collapse = !this.collapse
+    },
+    setting () {
+      this.$router.push('/setting')
+    },
+    logout () {
+      // window.sessionStorage.getItem('hmtoutiao', null)
+      window.sessionStorage.removeItem('hmtoutiao')
+      this.$router.push('/login')
     }
   }
 }

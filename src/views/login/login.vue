@@ -57,23 +57,37 @@ export default {
     }
   },
   methods: {
-    login (loginForm) {
-      this.$refs.loginForm.validate((valid) => {
+    login () {
+      // this.$refs.loginForm.validate((valid) => {
+      //   if (valid) {
+      //     // 校验成功，进行登录
+      //     this.axios
+      //       .post('authorizations', this.loginForm)
+      //       .then((res) => {
+      //         console.log(res)
+      //         // const data = res.data
+      //         // 保存登录状态
+      //         // 保存登录后返回的用户信息，包含token
+      //         window.sessionStorage.setItem('hmtoutiao', JSON.stringify(res.data.data))
+      //         this.$router.push('/')
+      //       })
+      //       .catch(() => {
+      //         this.$message.error('用户名或验证码错误')
+      //       })
+      //   }
+      // })
+
+      this.$refs.loginForm.validate(async (valid) => {
         if (valid) {
-          // 校验成功，进行登录
-          this.axios
-            .post('authorizations', this.loginForm)
-            .then((res) => {
-              console.log(res)
-              // const data = res.data
-              // 保存登录状态
-              // 保存登录后返回的用户信息，包含token
-              window.sessionStorage.setItem('hmtoutiao', JSON.stringify(res.data.data))
-              this.$router.push('/')
-            })
-            .catch(() => {
-              this.$message.error('用户名或验证码错误')
-            })
+          // 当接口调用失败的时候代码出现异常
+          // try(业务逻辑)catch(err){业务逻辑失败调用catch,进行错误的处理}
+          try {
+            const res = await this.axios.post('authorizations', this.loginForm)
+            window.sessionStorage.setItem('hmtoutiao', JSON.stringify(res.data.data))
+            this.$router.push('/')
+          } catch (err) {
+            this.$message.error('用户名或验证码错误')
+          }
         }
       })
     }
