@@ -1,7 +1,6 @@
 <template>
   <div class="artisle-container">
-    <my-channel @input='fn'></my-channel>
-    {{testData}}
+
     <el-card>
       <div slot="header">
         <my-bread>内容管理</my-bread>
@@ -18,14 +17,15 @@
           </el-radio-group>
         </el-form-item>
         <el-form-item label="频道：">
-          <el-select v-model="reqParams.channel_id">
+          <my-channel v-model="reqParams.channel_id"></my-channel>
+          <!-- <el-select v-model="reqParams.channel_id">
             <el-option
               v-for="item in channelOptions"
               :key="item.id"
               :label="item.name"
               :value="item.id"
             ></el-option>
-          </el-select>
+          </el-select> -->
         </el-form-item>
         <el-form-item label="时间：">
           <el-date-picker
@@ -112,7 +112,7 @@ export default {
         end_pubdate: null
       },
       // 默认频道数据
-      channelOptions: [],
+      // channelOptions: [],
       // 日期控件的数据
       dateValues: [],
       // 文章列表
@@ -123,14 +123,11 @@ export default {
   },
   created () {
     // 获取频道数据
-    this.getChannelOptions()
+    // this.getChannelOptions()
     this.getArticles()
   },
   methods: {
-    fn (data) {
-      console.log('fn')
-      this.testData = data
-    },
+
     edit (id) {
       // this.$router.push('/publish?id' + id)
       this.$router.push({ path: '/publish', query: { id } })
@@ -164,13 +161,13 @@ export default {
       this.reqParams.begin_pubdate = values[0]
       this.reqParams.end_pubdate = values[1]
     },
-    async getChannelOptions () {
-      //
-      const {
-        data: { data }
-      } = await this.axios.get('channels')
-      this.channelOptions = data.channels
-    },
+    // async getChannelOptions () {
+    //   //
+    //   const {
+    //     data: { data }
+    //   } = await this.axios.get('channels')
+    //   this.channelOptions = data.channels
+    // },
     async getArticles () {
       const {
         data: { data }
