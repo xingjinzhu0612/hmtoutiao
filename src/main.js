@@ -5,7 +5,8 @@ import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import router from '@/router'
 import axios from './api/axios'
-
+import component from './components/component'
+Vue.use(component)
 // axios.defaults.baseURL = 'http://ttapi.research.itcast.cn/mp/v1_0/'
 // axios.defaults.headers = {
 //   Authorization: 'Bearer ' + JSON.parse(window.sessionStorage.getItem('hmtoutiao')).token
