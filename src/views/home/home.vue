@@ -69,6 +69,7 @@
 </template>
 
 <script>
+import eventBus from '../../eventBus/eventBus'
 export default {
   data () {
     return {
@@ -82,6 +83,13 @@ export default {
     const user = JSON.parse(window.sessionStorage.getItem('hmtoutiao'))
     this.name = user.name
     this.avatar = user.photo
+    // 绑定事件
+    eventBus.$on('updateHeaderName', (name) => {
+      this.name = name
+    })
+    eventBus.$on('updateHeaderName', (photo) => {
+      this.photo = photo
+    })
   },
   methods: {
     toggleMenu () {
