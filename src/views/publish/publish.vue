@@ -28,7 +28,7 @@
           </div>
         </el-form-item>
         <el-form-item label="频道：" size="small">
-          <my-channel v-model="articleForm.channel_id" :options="editorOption"></my-channel>
+          <my-channel v-model="articleForm.channel_id" ></my-channel>
         </el-form-item>
         <el-form-item v-if="!articleId">
           <el-button type="primary" @click="publish(false)">发表</el-button>

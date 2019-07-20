@@ -1,10 +1,12 @@
 <template>
   <div class="image-container">
+
     <!-- 图片按钮 -->
     <div class="img-btn" @click="openDialog">
       <!-- //父组件有数据 没有使用默认图 -->
       <img :src="value || defaultImage" alt />
     </div>
+
     <!-- 对话框 -->
     <el-dialog :visible.sync="dialogVisible" width="700px">
       <!--v-model="activeName" 选中了tab选项卡 name属性值 -->
